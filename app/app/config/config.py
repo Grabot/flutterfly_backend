@@ -53,7 +53,7 @@ class Settings(BaseSettings):
     REDDIT_USER = "https://oauth.reddit.com/api/v1/me"
     REDDIT_CLIENT_ID = os.environ.get("REDDIT_CLIENT_ID", None)
     REDDIT_CLIENT_SECRET = os.environ.get("REDDIT_CLIENT_SECRET", None)
-    REDDIT_REDIRECT = "https://flutterfly.nl/login/reddit/callback"
+    REDDIT_REDIRECT = "https://flutterfly.eu/login/reddit/callback"
     DEBUG = True
 
     jwk = {
