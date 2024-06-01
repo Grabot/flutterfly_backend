@@ -41,6 +41,7 @@ class Settings(BaseSettings):
     GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
     GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", None)
     GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid-configuration"
+    GOOGLE_ACCESS_TOKEN_URL = "https://www.googleapis.com/oauth2/v3/userinfo"
 
     GITHUB_AUTHORIZE = "https://github.com/login/oauth/authorize"
     GITHUB_ACCESS = "https://github.com/login/oauth/access_token"

@@ -119,6 +119,26 @@ class User(SQLModel, table=True):
             return 1
         return 0
 
+    def check_platform_achieved(self, is_web):
+        # we return an int, which indicates what action should be taken.
+        # 0 means nothing
+        # 1 means update user
+        # 2 means platform achievement is achieved
+        if self.platform != 3:
+            if is_web:
+                platform_value = self.logged_in_web()
+                if platform_value > 0:
+                    return 1
+                if platform_value == 2:
+                    return 2
+            elif not is_web:
+                platform_value = self.logged_in_mobile()
+                if platform_value > 0:
+                    return 1
+                if platform_value == 2:
+                    return 2
+        return 2
+
     def generate_refresh_token(self, expires_in=345600):
         payload = {
             "user_name": self.username,

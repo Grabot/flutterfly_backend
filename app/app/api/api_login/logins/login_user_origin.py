@@ -8,6 +8,7 @@ from sqlmodel import select
 
 from app.database import get_db
 from app.models import User
+from sqlalchemy.orm import selectinload
 
 
 async def login_user_origin(
@@ -15,7 +16,7 @@ async def login_user_origin(
     users_email: str,
     origin: int,
     db: AsyncSession = Depends(get_db),
-) -> Optional[User]:
+) -> [Optional[User], bool]:
     # Some very simple pre-check to make sure the username will not be email formatted.
     if re.match(
         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
@@ -29,6 +30,7 @@ async def login_user_origin(
         select(User)
         .where(User.origin == origin)
         .where(func.lower(User.email) == users_email.lower())
+        .options(selectinload(User.friends))
     )
     results_origin = await db.execute(statement_origin)
     result_user_origin = results_origin.first()
@@ -46,7 +48,7 @@ async def login_user_origin(
             )
             db.add(user)
             await db.commit()
-            return user
+            return [user, True]
         else:
             # If the username is taken than we change it because we have to create the user here.
             # The user can change it later if that person really hates it.
@@ -70,10 +72,10 @@ async def login_user_origin(
                     )
                     db.add(user)
                     await db.commit()
-                    return user
+                    return [user, True]
                 else:
                     index += 1
-            return None
+            return [None, False]
     else:
         origin_user: User = result_user_origin.User
-        return origin_user
+        return [origin_user, False]

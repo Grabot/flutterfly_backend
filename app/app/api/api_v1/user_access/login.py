@@ -67,7 +67,7 @@ async def login_user(
 
     # If the platform is 3 we don't need to check anything anymore.
     platform_achievement = False
-    print(f"platform: {user.platform}")
+
     if user.platform != 3:
         if is_web:
             platform_value = user.logged_in_web()
@@ -93,9 +93,7 @@ async def login_user(
         "access_token": user_token.access_token,
         "refresh_token": user_token.refresh_token,
         "user": return_user,
+        "platform_achievement": platform_achievement
     }
-    print(f"platform_achievement: {platform_achievement}")
-    if platform_achievement:
-        login_response["platform_achievement"] = True
 
     return login_response
