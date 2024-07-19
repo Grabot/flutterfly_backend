@@ -94,7 +94,7 @@ async def github_callback(
         # Send user to the world
         request_base_url = str(request.base_url)
         request_base_url = request_base_url.replace("http://", "https://", 1)
-        world_url = request_base_url + "birdaccess"
+        world_url = request_base_url + "butterflyaccess"
         world_url_params = world_url + "?" + url_params
         return RedirectResponse(world_url_params)
     else:

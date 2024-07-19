@@ -31,7 +31,7 @@ async def get_score(
             "total_flutters": user.total_flutters,
             "total_pipes_cleared": user.total_pipes_cleared,
             "total_games": user.total_games,
-            "best_score_single_bird": user.best_score_single_bird,
-            "best_score_double_bird": user.best_score_double_bird,
+            "best_score_single_butterfly": user.best_score_single_butterfly,
+            "best_score_double_butterfly": user.best_score_double_butterfly,
         },
     }

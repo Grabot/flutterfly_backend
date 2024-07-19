@@ -1,7 +1,6 @@
-FROM python:3.10.12-slim-bullseye
+FROM python:3.12.3-slim-bullseye
 
 WORKDIR /app
-ENV PYTHONPATH=${PYTHONPATH}:${PWD}
 
 # install static dependencies
 RUN apt-get update &&\
