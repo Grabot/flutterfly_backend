@@ -88,6 +88,7 @@ class Settings(BaseSettings):
     MAIL_SENDERNAME = os.environ.get("MAIL_SENDERNAME")
     BASE_URL = os.environ.get("BASE_URL")
     UPLOAD_FOLDER_AVATARS = "static/uploads/avatars"
+    ACHIEVEMENT_IMAGES = "static/uploads/achievements"
     UPLOAD_FOLDER_CRESTS = "static/uploads/crests"
 
     class Config:

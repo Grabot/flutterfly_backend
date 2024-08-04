@@ -5,19 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0da32e4-eba1-4b44-b18f-d691e97b4598" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/flutterfly_backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flutterfly_backend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pre-commit-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.pre-commit-config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/api/api_login/logins/github_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/api/api_login/logins/github_login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/api/api_login/logins/google_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/api/api_login/logins/google_login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/api/api_login/logins/reddit_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/api/api_login/logins/reddit_login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/api/api_v1/flutterfly/get_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/api/api_v1/flutterfly/get_score.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/api/api_v1/flutterfly/update_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/api/api_v1/flutterfly/update_score.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/models/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/api/api_v1/email/remove_account.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/api/api_v1/settings/get_achievement_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/app/util/email/delete_account_email.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/api/api_v1/email/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/api/api_v1/email/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/api/api_v1/settings/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/api/api_v1/settings/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/config/config.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,14 +37,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/zwaar/BroCast/BroCast-backend&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/zwaar/ZwaarProjects/FlutterFly/flutterfly_backend/app/app/util/email",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/app/util/email" />
+      <recent name="$PROJECT_DIR$/app/app/api/api_v1/settings" />
+      <recent name="$PROJECT_DIR$/achievement_images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/app/api/api_v1/email" />
+      <recent name="$PROJECT_DIR$/app/app" />
+      <recent name="$PROJECT_DIR$/app" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
