@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0da32e4-eba1-4b44-b18f-d691e97b4598" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/app/api/api_v1/email/remove_account.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/app/api/api_v1/settings/get_achievement_image.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/app/util/email/delete_account_email.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/api/api_v1/email/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/api/api_v1/email/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/api/api_v1/settings/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/api/api_v1/settings/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/config/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app/api/api_v1/email/remove_account.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app/api/api_v1/email/remove_account.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,14 +32,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/zwaar/ZwaarProjects/FlutterFly/flutterfly_backend/app/app/util/email",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/zwaar/ZwaarProjects/FlutterFly/flutterfly_backend/app/app/util/email&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/app/util/email" />

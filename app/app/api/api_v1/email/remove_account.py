@@ -34,6 +34,8 @@ async def remove_account(
     statement = (
         select(User)
         .where(func.lower(User.email) == email.lower())
+        .options(selectinload(User.friends))
+        .options(selectinload(User.tokens))
     )
     results = await db.execute(statement)
     result = results.all()
@@ -42,7 +44,7 @@ async def remove_account(
             "no account found with that email", response
         )
 
-    user = result[0]
+    user = result[0].User
     access_expiration_time = 1800  # 30 minutes
     refresh_expiration_time = 18000  # 5 hours
     token_expiration = int(time.time()) + access_expiration_time
@@ -54,7 +56,7 @@ async def remove_account(
     body = delete_account_email.format(
         base_url=settings.BASE_URL, token=delete_token, refresh_token=refresh_delete_token
     )
-    _ = task_send_email.delay(email, subject, body)
+    _ = task_send_email.delay(user.username, email, subject, body)
 
     user_token = UserToken(
         user_id=user.id,
