@@ -10,7 +10,7 @@ class LeaderboardOnePlayer(SQLModel, table=True):
 
     score: int
     user_name: str
-    user_id: int = Field(foreign_key="User.id")
+    user_id: int  # no foreign key. The user might get deleted
     timestamp: datetime = Field(index=True, default=datetime.utcnow())
 
     @property

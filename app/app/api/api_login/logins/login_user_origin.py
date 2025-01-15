@@ -9,6 +9,7 @@ from sqlmodel import select
 from app.database import get_db
 from app.models import User
 from sqlalchemy.orm import selectinload
+import hashlib
 
 
 async def login_user_origin(
@@ -26,10 +27,11 @@ async def login_user_origin(
 
     # Check if the user has logged in before using this origin.
     # If that's the case it has a Row in the User database, and we log in
+    hashed_email = hashlib.sha512(users_email.lower().encode("utf-8")).hexdigest()
     statement_origin = (
         select(User)
         .where(User.origin == origin)
-        .where(func.lower(User.email) == users_email.lower())
+        .where(User.email_hash == hashed_email)
         .options(selectinload(User.friends))
     )
     results_origin = await db.execute(statement_origin)
@@ -44,7 +46,7 @@ async def login_user_origin(
 
         if not result_user_name:
             user = User(
-                username=users_name, email=users_email, password_hash="", salt="", origin=origin
+                username=users_name, email_hash=hashed_email, password_hash="", salt="", origin=origin
             )
             db.add(user)
             await db.commit()
@@ -65,7 +67,7 @@ async def login_user_origin(
                 if not result_user_name_name:
                     user = User(
                         username=new_user_name,
-                        email=users_email,
+                        email_hash=hashed_email,
                         password_hash="",
                         salt="",
                         origin=origin,

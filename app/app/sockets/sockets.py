@@ -30,7 +30,7 @@ async def handle_join(sid, *args, **kwargs):
     user_id = data["user_id"]
     if user_id != -1:
         room = "room_%s" % user_id
-        sio.enter_room(sid, room)
+        await sio.enter_room(sid, room)
         await sio.emit(
             "message_event",
             "User has entered room %s" % room,
@@ -44,7 +44,7 @@ async def handle_leave(sid, *args, **kwargs):
     user_id = data["user_id"]
     if user_id != -1:
         room = "room_%s" % user_id
-        sio.leave_room(sid, room)
+        await sio.leave_room(sid, room)
         await sio.emit(
             "message_event",
             "User has left room %s" % room,

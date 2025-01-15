@@ -8,6 +8,7 @@ from typing import List, Optional
 
 from authlib.jose import jwt
 from passlib.apps import custom_app_context as pwd_context
+from sqlalchemy import Index
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlmodel import Field, Relationship, SQLModel, select
 
@@ -23,7 +24,7 @@ class User(SQLModel, table=True):
     __tablename__ = "User"
     id: Optional[int] = Field(default=None, primary_key=True)
     username: str = Field(default=None, index=True, unique=True)
-    email: str
+    email_hash: str
     password_hash: str
     salt: str
     about_me: Optional[str] = Field(default=None)
@@ -52,6 +53,8 @@ class User(SQLModel, table=True):
             "primaryjoin": "User.id==Friend.friend_id",
         },
     )
+
+    __table_args__ = (Index("user_index", "email_hash", "origin", unique=True),)
 
     def hash_password(self, password):
         salt = secrets.token_hex(8)
@@ -157,7 +160,7 @@ class User(SQLModel, table=True):
         self.email_verified = True
 
     def avatar_filename(self):
-        return md5(self.email.lower().encode("utf-8")).hexdigest()
+        return md5(self.email_hash.encode("utf-8")).hexdigest()
 
     def avatar_filename_small(self):
         return self.avatar_filename() + "_small"
@@ -212,6 +215,7 @@ class User(SQLModel, table=True):
                 "best_score_double_butterfly": self.best_score_double_butterfly,
             },
             "achievements": json.loads(self.achievements),
+            "origin": self.origin == 0, # we only want to know if it's a regular login
         }
 
     @property
@@ -254,4 +258,5 @@ class User(SQLModel, table=True):
                 "best_score_double_butterfly": 0,
             },
             "achievements": {},
+            "origin": self.origin == 0,
         }

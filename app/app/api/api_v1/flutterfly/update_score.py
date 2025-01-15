@@ -42,10 +42,10 @@ async def update_score(
     total_games = score_update_request.total_games
     # A final check to make sure the score only goes up
 
-    if best_score_single_butterfly:
+    if best_score_single_butterfly != -1:
         if best_score_single_butterfly > user.best_score_single_butterfly:
             user.best_score_single_butterfly = best_score_single_butterfly
-    if best_score_double_butterfly:
+    if best_score_double_butterfly != -1:
         if best_score_double_butterfly > user.best_score_double_butterfly:
             user.best_score_double_butterfly = best_score_double_butterfly
     if total_flutters > user.total_flutters:

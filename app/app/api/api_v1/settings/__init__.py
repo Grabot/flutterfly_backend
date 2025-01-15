@@ -5,5 +5,4 @@ from . import (
     get_avatar_user,
     is_avatar_default,
     reset_avatar,
-    get_achievement_image
 )

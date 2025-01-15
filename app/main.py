@@ -1,5 +1,3 @@
-import os
-import stat
 
 import uvicorn
 from fastapi import APIRouter, FastAPI
@@ -34,13 +32,6 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(api_router_login, prefix=settings.API_LOGIN_STR)
 
 app.mount("/", sio_app)
-
-
-@app.on_event("startup")
-def startup_function():
-    if not os.path.exists(settings.UPLOAD_FOLDER_AVATARS):
-        os.makedirs(settings.UPLOAD_FOLDER_AVATARS)
-        os.chmod(settings.UPLOAD_FOLDER_AVATARS, stat.S_IRWXO)
 
 
 if __name__ == "__main__":

@@ -60,7 +60,13 @@ async def get_leaderboard_one_player(request: Request, db: AsyncSession = Depend
 
     leaders = []
     for lead in all_leaders:
-        leader = LeaderboardOnePlayer(**dict(lead))
+        leader = LeaderboardOnePlayer(
+            id=lead[0],
+            score=lead[1],
+            user_name=lead[2],
+            user_id=lead[3],
+            timestamp=lead[4]
+            )
         leaders.append(leader.serialize)
 
     return {"result": True, "leaders": leaders}

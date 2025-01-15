@@ -60,7 +60,13 @@ async def get_leaderboard_two_players(request: Request, db: AsyncSession = Depen
 
     leaders = []
     for lead in all_leaders:
-        leader = LeaderboardTwoPlayer(**dict(lead))
+        leader = LeaderboardTwoPlayer(
+            id=lead[0],
+            score=lead[1],
+            user_name=lead[2],
+            user_id=lead[3],
+            timestamp=lead[4]
+            )
         leaders.append(leader.serialize)
 
     return {"result": True, "leaders": leaders}

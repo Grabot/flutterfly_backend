@@ -13,6 +13,7 @@ from app.database import get_db
 from app.models import User
 from app.util.rest_util import get_failed_response
 from app.util.util import get_user_tokens
+import hashlib
 
 
 class LoginRequest(BaseModel):
@@ -36,10 +37,11 @@ async def login_user(
         return get_failed_response("Invalid request", response)
     if user_name is None:
         # login with email
+        email_hash = hashlib.sha512(email.lower().encode("utf-8")).hexdigest()
         statement = (
             select(User)
             .where(User.origin == 0)
-            .where(func.lower(User.email) == email.lower())
+            .where(User.email_hash == email_hash)
             .options(selectinload(User.friends))
         )
         results = await db.execute(statement)

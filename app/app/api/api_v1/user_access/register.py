@@ -14,6 +14,7 @@ from app.models import User
 from app.sockets.sockets import sio
 from app.util.rest_util import get_failed_response
 from app.util.util import get_user_tokens
+import hashlib
 
 
 class RegisterRequest(BaseModel):
@@ -48,7 +49,8 @@ async def register_user(
         )
 
     # Also not loading the friends and followers here, just checking if the email is taken.
-    statement = select(User).where(User.origin == 0).where(func.lower(User.email) == email.lower())
+    email_hash = hashlib.sha512(email.lower().encode("utf-8")).hexdigest()
+    statement = select(User).where(User.origin == 0).where(User.email_hash == email_hash)
     results = await db.execute(statement)
     result = results.first()
 
@@ -60,7 +62,7 @@ async def register_user(
         platform = 1
     else:
         platform = 2
-    user = User(username=user_name, email=email, origin=0, platform=platform)
+    user = User(username=user_name, email_hash=email_hash, origin=0, platform=platform)
     user.hash_password(password)
     db.add(user)
     # Refresh user so we can get the id.
