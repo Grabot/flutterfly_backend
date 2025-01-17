@@ -84,9 +84,7 @@ async def apple_get_redirect(
     params["refresh_token"] = refresh_token
     url_params = urlencode(params)
 
-    base_url = settings.BASE_URL
-    full_url = f"{base_url}/"
-    world_url = full_url + "worldaccess"
+    world_url = f"{settings.BASE_URL}/butterflyaccess"
     world_url_params = world_url + "?" + url_params
     return RedirectResponse(world_url_params)
 
