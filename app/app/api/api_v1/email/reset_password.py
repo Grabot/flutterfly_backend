@@ -13,6 +13,7 @@ from app.database import get_db
 from app.models import User, UserToken
 from app.util.email.reset_password_email import reset_password_email
 from app.util.rest_util import get_failed_response
+import hashlib
 
 
 class PasswordResetRequest(BaseModel):
@@ -25,9 +26,11 @@ async def reset_password(
     response: Response,
     db: AsyncSession = Depends(get_db),
 ) -> dict:
-    email = password_reset_request.email
+    users_email = password_reset_request.email
 
-    statement = select(User).where(User.origin == 0).where(func.lower(User.email) == email.lower())
+    hashed_email = hashlib.sha512(users_email.lower().encode("utf-8")).hexdigest()
+
+    statement = select(User).where(User.origin == 0).where(User.email_hash == hashed_email)
     results = await db.execute(statement)
     result_user = results.first()
     if not result_user:
@@ -46,7 +49,7 @@ async def reset_password(
         base_url=settings.BASE_URL, token=reset_token, refresh_token=refresh_reset_token
     )
 
-    _ = task_send_email.delay(user.username, user.email, subject, body)
+    _ = task_send_email.delay(user.username, users_email, subject, body)
 
     user_token = UserToken(
         user_id=user.id,
